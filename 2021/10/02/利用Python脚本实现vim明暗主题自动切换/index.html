@@ -1,0 +1,244 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>利用Python脚本实现vim明暗主题自动切换 | 依墟のBLOG</title><meta name="keywords" content="python"><meta name="author" content="依墟"><meta name="copyright" content="依墟"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="利用Python脚本实现neovim的明暗主题自动切换快开通你的小脑筋QwQ，跟我一起来！ 开头～～朋友，你是否和我一样，是个忠实的vim狂热粉，却苦于黑天白夜的敲代码，而感到双眼酸疼，那么没问题！今天，我就给您带来我们公司的最新产品 —- nvim主题自动切换器 其实就是个大佬们都看不上的垃圾脚本（ 正文～～先贴上代码： 1234567891011121314151617181920212223">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用Python脚本实现vim明暗主题自动切换">
+<meta property="og:url" content="http://example.com/2021/10/02/%E5%88%A9%E7%94%A8Python%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0vim%E6%98%8E%E6%9A%97%E4%B8%BB%E9%A2%98%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2/index.html">
+<meta property="og:site_name" content="依墟のBLOG">
+<meta property="og:description" content="利用Python脚本实现neovim的明暗主题自动切换快开通你的小脑筋QwQ，跟我一起来！ 开头～～朋友，你是否和我一样，是个忠实的vim狂热粉，却苦于黑天白夜的敲代码，而感到双眼酸疼，那么没问题！今天，我就给您带来我们公司的最新产品 —- nvim主题自动切换器 其实就是个大佬们都看不上的垃圾脚本（ 正文～～先贴上代码： 1234567891011121314151617181920212223">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302">
+<meta property="article:published_time" content="2021-10-02T12:01:24.000Z">
+<meta property="article:modified_time" content="2021-12-11T13:02:48.101Z">
+<meta property="article:author" content="依墟">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.xjh.me/random_img.php?type=bg&ctype=nature&return=302"><link rel="shortcut icon" href="/img/fav.png"><link rel="canonical" href="http://example.com/2021/10/02/%E5%88%A9%E7%94%A8Python%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0vim%E6%98%8E%E6%9A%97%E4%B8%BB%E9%A2%98%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '利用Python脚本实现vim明暗主题自动切换',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-12-11 21:02:48'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/ava.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2021/12/05/QNsZ9wyWc4AMunt.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">依墟のBLOG</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">利用Python脚本实现vim明暗主题自动切换</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-10-02T12:01:24.000Z" title="发表于 2021-10-02 20:01:24">2021-10-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-12-11T13:02:48.101Z" title="更新于 2021-12-11 21:02:48">2021-12-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/vim/">vim</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="利用Python脚本实现vim明暗主题自动切换"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="利用Python脚本实现neovim的明暗主题自动切换"><a href="#利用Python脚本实现neovim的明暗主题自动切换" class="headerlink" title="利用Python脚本实现neovim的明暗主题自动切换"></a>利用Python脚本实现neovim的明暗主题自动切换</h1><p>快开通你的小脑筋QwQ，跟我一起来！</p>
+<h2 id="开头～～"><a href="#开头～～" class="headerlink" title="开头～～"></a>开头～～</h2><p>朋友，你是否和我一样，是个忠实的vim狂热粉，却苦于黑天白夜的敲代码，而感到双眼酸疼，那么没问题！<del>今天，我就给您带来我们公司的最新产品 —- nvim主题自动切换器</del></p>
+<p>其实就是个大佬们都看不上的垃圾脚本（</p>
+<h3 id="正文～～"><a href="#正文～～" class="headerlink" title="正文～～"></a>正文～～</h3><p>先贴上代码：</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>! Auto_change_themes()</span><br><span class="line">py &lt;&lt; EOF</span><br><span class="line"></span><br><span class="line">import vim</span><br><span class="line">import os</span><br><span class="line">import pytz</span><br><span class="line">import datetime</span><br><span class="line">from dateutil.tz import tzlocal</span><br><span class="line">from suntime import Sun</span><br><span class="line">import requests as req</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line">ret = req.get(</span><br><span class="line">        url = <span class="symbol">&#x27;https</span>://apis.<span class="keyword">map</span>.qq.com/ws/location/v1/ip&#x27;,</span><br><span class="line">        params=&#123;</span><br><span class="line">            <span class="symbol">&#x27;key</span>&#x27;: <span class="symbol">&#x27;your</span> key&#x27; #此处更换为你自己的密钥</span><br><span class="line">            &#125;</span><br><span class="line">        ).json()</span><br><span class="line"></span><br><span class="line">home = os.environ[<span class="symbol">&#x27;HOME</span>&#x27;]</span><br><span class="line">config_dir = &#x27;/.config/nvim/location.npy&#x27;</span><br><span class="line">file_path = home + config_dir</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> os.path.exists(file_path):</span><br><span class="line">	read_location = np.load(file_path,allow_pickle=<span class="literal">True</span>).item()</span><br><span class="line">	latitude = read_location.get(<span class="symbol">&#x27;result</span>&#x27;).get(<span class="symbol">&#x27;location</span>&#x27;).get(<span class="symbol">&#x27;lat</span>&#x27;)</span><br><span class="line">	longtitude = read_location.get(<span class="symbol">&#x27;result</span>&#x27;).get(<span class="symbol">&#x27;location</span>&#x27;).get(<span class="symbol">&#x27;lng</span>&#x27;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	np.save(file_path,ret)</span><br><span class="line">	read_location = np.load(file_path,allow_pickle=<span class="literal">True</span>).item()</span><br><span class="line">	latitude = read_location.get(<span class="symbol">&#x27;result</span>&#x27;).get(<span class="symbol">&#x27;location</span>&#x27;).get(<span class="symbol">&#x27;lat</span>&#x27;)</span><br><span class="line">	longtitude = read_location.get(<span class="symbol">&#x27;result</span>&#x27;).get(<span class="symbol">&#x27;location</span>&#x27;).get(<span class="symbol">&#x27;lng</span>&#x27;)</span><br><span class="line"></span><br><span class="line">#latitude = <span class="number">26.153224357107746</span></span><br><span class="line">#longitude = <span class="number">118.16177778433492</span></span><br><span class="line"></span><br><span class="line">today = datetime.datetime.today()</span><br><span class="line">year = today.year</span><br><span class="line">month = today.month</span><br><span class="line">day = today.day</span><br><span class="line">sun = Sun(latitude,longtitude)</span><br><span class="line"></span><br><span class="line">abd = datetime.date(year, month, day)</span><br><span class="line">abd_sr = sun.get_local_sunrise_time(abd)</span><br><span class="line">abd_ss = sun.get_local_sunset_time(abd)</span><br><span class="line"></span><br><span class="line">now=datetime.datetime.now()</span><br><span class="line">now=now.replace(tzinfo=tzlocal())</span><br><span class="line">now_for_sunrise = now + datetime.timedelta(days=<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> now_for_sunrise &gt; abd_sr <span class="keyword">and</span> now &lt; abd_ss:</span><br><span class="line">	vim.command(<span class="symbol">&#x27;set</span> background=dark&#x27;)</span><br><span class="line">	vim.command(<span class="symbol">&#x27;colorscheme</span> deus&#x27;)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	vim.command(<span class="symbol">&#x27;set</span> background=dark&#x27;)</span><br><span class="line">	vim.command(<span class="symbol">&#x27;colorscheme</span> onedark &#x27;)</span><br><span class="line"></span><br><span class="line">EOF</span><br><span class="line">endfunction</span><br><span class="line"></span><br><span class="line">call Auto_change_themes()</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>建议建议仔细研读代码后，在进行编写，不要一味地复制粘贴！</strong></em></p>
+<h3 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h3><h5 id="初版"><a href="#初版" class="headerlink" title="初版"></a>初版</h5><p>最早呢，自从我在网络上搜寻一番后，我在胸中得到了我脚本的最初代码：</p>
+<figure class="highlight v"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>! Auto_change_themes()</span><br><span class="line">py &lt;&lt; EOF</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> vim</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">date_early=<span class="number">8</span></span><br><span class="line">date_late=<span class="number">18</span></span><br><span class="line">now= <span class="keyword">int</span>(os<span class="variable">.popen</span>(<span class="number">&#x27;da</span>te | cut -d<span class="string">&quot; &quot;</span> -f5 | cut -d: -f1&#x27;)<span class="variable">.read</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> now &gt; date_early <span class="keyword">and</span> now &lt; date_late:</span><br><span class="line">	vim<span class="variable">.command</span>(&#x27;set background=dark&#x27;)</span><br><span class="line">	vim<span class="variable">.command</span>(&#x27;colorscheme deus&#x27;)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	vim<span class="variable">.command</span>(&#x27;set background=dark&#x27;)</span><br><span class="line">	vim<span class="variable">.command</span>(&#x27;colorscheme onedark &#x27;)</span><br><span class="line"></span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+<p>这里的”colorscheme”可自由更换为你喜欢的主题</p>
+<p>但是你们也看到了这个其实就是个写死的命令，虽说能实现功能吧，但还是觉得太简陋了，于是就有了升级版。</p>
+<h5 id="升级版"><a href="#升级版" class="headerlink" title="升级版"></a>升级版</h5><p>思路如下：</p>
+<p>为了使每个用户无论处于哪里，只要有良好的互联网连接，就能获得当地的日出日落时间，以准确判定系统主题。</p>
+<p>我在pypi里找到了这样的案例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> suntime <span class="keyword">import</span> Sun, SunTimeException</span><br><span class="line"></span><br><span class="line">latitude = <span class="number">51.21</span></span><br><span class="line">longitude = <span class="number">21.01</span></span><br><span class="line"></span><br><span class="line">sun = Sun(latitude, longitude)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Get today&#x27;s sunrise and sunset in UTC</span></span><br><span class="line">today_sr = sun.get_sunrise_time()</span><br><span class="line">today_ss = sun.get_sunset_time()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Today at Warsaw the sun raised at &#123;&#125; and get down at &#123;&#125; UTC&#x27;</span>.</span><br><span class="line">      <span class="built_in">format</span>(today_sr.strftime(<span class="string">&#x27;%H:%M&#x27;</span>), today_ss.strftime(<span class="string">&#x27;%H:%M&#x27;</span>)))</span><br></pre></td></tr></table></figure>
+
+<p>利用<strong>datetime</strong>和<strong>suntime</strong>这两个模块，我们就能通过经纬度来判断我们此地的日出以及日落时间，相较于手写时间，灵活了不少。</p>
+<p>但是你应该也注意到了，latitude和longitude这两个值还是需要我们手动填写。那咋办呢，接着造啊！</p>
+<p>于是我又开始了，全网找资料的历程，终于，让我在csdn上找到了这么一篇利用第三方api获取当前经纬度的文章：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests <span class="keyword">as</span> req</span><br><span class="line"></span><br><span class="line">ret = req.get(</span><br><span class="line">        url = <span class="string">&#x27;https://apis.map.qq.com/ws/location/v1/ip&#x27;</span>,</span><br><span class="line">        params=&#123;</span><br><span class="line">            <span class="string">&#x27;key&#x27;</span>: <span class="string">&#x27;your key&#x27;</span> <span class="comment">#此处更换为你自己的密钥</span></span><br><span class="line">            &#125;</span><br><span class="line">        ).json()</span><br></pre></td></tr></table></figure>
+
+
+
+<p>这里利用requests模块获取到了经纬等地理信息的列表文件，我们将它留存起来，以供之后使用。</p>
+<p>看到这里，相信不少小伙伴们觉得：哎呀，这时间也自动了，经纬度也自动了，是不是就万事大吉了呢～～</p>
+<p>非也！我要说的是，上述方案，只能在有网时使用，万一断网，那不是完犊子。所以，我由于又又又对脚本文件进行了更改：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests <span class="keyword">as</span> req</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">ret = req.get(</span><br><span class="line">        url = <span class="string">&#x27;https://apis.map.qq.com/ws/location/v1/ip&#x27;</span>,</span><br><span class="line">        params=&#123;</span><br><span class="line">            <span class="string">&#x27;key&#x27;</span>: <span class="string">&#x27;your key&#x27;</span> <span class="comment">#此处更换为你自己的密钥</span></span><br><span class="line">            &#125;</span><br><span class="line">        ).json()</span><br><span class="line"></span><br><span class="line">home = os.environ[<span class="string">&#x27;HOME&#x27;</span>]</span><br><span class="line">config_dir = <span class="string">&#x27;/.config/nvim/location.npy&#x27;</span></span><br><span class="line">file_path = home + config_dir</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> os.path.exists(file_path):</span><br><span class="line">	read_location = np.load(file_path,allow_pickle=<span class="literal">True</span>).item()</span><br><span class="line">	latitude = read_location.get(<span class="string">&#x27;result&#x27;</span>).get(<span class="string">&#x27;location&#x27;</span>).get(<span class="string">&#x27;lat&#x27;</span>)</span><br><span class="line">	longtitude = read_location.get(<span class="string">&#x27;result&#x27;</span>).get(<span class="string">&#x27;location&#x27;</span>).get(<span class="string">&#x27;lng&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">	np.save(file_path,ret)</span><br><span class="line">	read_location = np.load(file_path,allow_pickle=<span class="literal">True</span>).item()</span><br><span class="line">	latitude = read_location.get(<span class="string">&#x27;result&#x27;</span>).get(<span class="string">&#x27;location&#x27;</span>).get(<span class="string">&#x27;lat&#x27;</span>)</span><br><span class="line">	longtitude = read_location.get(<span class="string">&#x27;result&#x27;</span>).get(<span class="string">&#x27;location&#x27;</span>).get(<span class="string">&#x27;lng&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>如上，只要我们在第一次联网的情况下，get了这个列表数据，将其保存，那么以后只要都去使用这个文件，岂不就是一劳永逸。只要用一个简单的if语句就可以判断文件的有无，并决定是否使用网络资源，读者大大们，<del>你们说妙不妙</del></p>
+<p>算了，不说了，再卖弄就要被制裁了。</p>
+<h5 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h5><p>剩下的使用时间转换和列表读取，来判断时间的早晚，相信各位大佬们都会了，我就不再赘述 了。小白们也可以自己查资料的对吧，你们都是成年人了，嘿嘿。（其实就是懒狗不想写）</p>
+<p><a target="_blank" rel="noopener" href="http://tiebapic.baidu.com/forum/pic/item/bf1ed187c9177f3efaafec6c67cf3bc79e3d560b.jpg"></a></p>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h5><p>但是呢，这个插件没有想象中的那么好用。怎么说，功能是实现了，但是速度真的是一言难尽。在~/.config/nvim/init.vim里source了这个文件之后，启动时间足足延长了2s,这能忍吗，这忍不了！</p>
+<p>所以追求速度的读者朋友们还是三思而后行！</p>
+<h3 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h3><p>文章到这里就结束了，说了这么多废话，还请各位多多包涵。</p>
+<p>特别感谢以下博主给我提供的帮助：</p>
+<p>csdn简说Python：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39241986/article/details/109192934">https://blog.csdn.net/qq_39241986/article/details/109192934</a></p>
+<p>知乎Yggdroot：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/89243293">https://zhuanlan.zhihu.com/p/89243293</a></p>
+<ul>
+<li>简说Python大哥为我提供了利用腾讯地图实时定位经纬度的解决方案</li>
+<li>而Yggdroot教会了我，如何利用Python编写vim插件</li>
+</ul>
+<p>值得一提的是，Yggdroot用Python写了诸如Leader的优良插件，很值得大家学习！</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">依墟</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/10/02/%E5%88%A9%E7%94%A8Python%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0vim%E6%98%8E%E6%9A%97%E4%B8%BB%E9%A2%98%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2/">http://example.com/2021/10/02/%E5%88%A9%E7%94%A8Python%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0vim%E6%98%8E%E6%9A%97%E4%B8%BB%E9%A2%98%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">依墟のBLOG</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/python/">python</a></div><div class="post_share"><div class="social-share" data-image="https://img.xjh.me/random_img.php?type=bg&amp;ctype=nature&amp;return=302" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/08/22/%E8%A7%A3%E5%86%B3Arch-Linux%E6%9E%84%E5%BB%BA%E5%86%85%E6%A0%B8%E6%A8%A1%E5%9D%97%E6%97%B6%E6%8A%A5%E6%8A%A5%E6%A8%A1%E5%9D%97%E7%BC%BA%E5%A4%B1%E7%9A%84%E8%AD%A6%E5%91%8A/"><img class="next-cover" src="https://img.xjh.me/random_img.php?type=bg&amp;ctype=nature&amp;return=302" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">解决Arch Linux构建内核模块时报报模块缺失的警告</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/ava.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">依墟</div><div class="author-info__description">二刺螈废宅的异世界</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/cwyawsl" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:ashloverem@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A9%E7%94%A8Python%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0neovim%E7%9A%84%E6%98%8E%E6%9A%97%E4%B8%BB%E9%A2%98%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2"><span class="toc-number">1.</span> <span class="toc-text">利用Python脚本实现neovim的明暗主题自动切换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%A4%B4%EF%BD%9E%EF%BD%9E"><span class="toc-number">1.1.</span> <span class="toc-text">开头～～</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A3%E6%96%87%EF%BD%9E%EF%BD%9E"><span class="toc-number">1.1.1.</span> <span class="toc-text">正文～～</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF"><span class="toc-number">1.1.2.</span> <span class="toc-text">设计思路</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%9D%E7%89%88"><span class="toc-number">1.1.2.0.1.</span> <span class="toc-text">初版</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8D%87%E7%BA%A7%E7%89%88"><span class="toc-number">1.1.2.0.2.</span> <span class="toc-text">升级版</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD"><span class="toc-number">1.1.2.0.3.</span> <span class="toc-text">条件判断</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%BA%E7%82%B9"><span class="toc-number">1.1.2.0.4.</span> <span class="toc-text">缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%84%9F%E8%B0%A2"><span class="toc-number">1.1.3.</span> <span class="toc-text">感谢</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/10/02/%E5%88%A9%E7%94%A8Python%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0vim%E6%98%8E%E6%9A%97%E4%B8%BB%E9%A2%98%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2/" title="利用Python脚本实现vim明暗主题自动切换"><img src="https://img.xjh.me/random_img.php?type=bg&amp;ctype=nature&amp;return=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="利用Python脚本实现vim明暗主题自动切换"/></a><div class="content"><a class="title" href="/2021/10/02/%E5%88%A9%E7%94%A8Python%E8%84%9A%E6%9C%AC%E5%AE%9E%E7%8E%B0vim%E6%98%8E%E6%9A%97%E4%B8%BB%E9%A2%98%E8%87%AA%E5%8A%A8%E5%88%87%E6%8D%A2/" title="利用Python脚本实现vim明暗主题自动切换">利用Python脚本实现vim明暗主题自动切换</a><time datetime="2021-10-02T12:01:24.000Z" title="发表于 2021-10-02 20:01:24">2021-10-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/22/%E8%A7%A3%E5%86%B3Arch-Linux%E6%9E%84%E5%BB%BA%E5%86%85%E6%A0%B8%E6%A8%A1%E5%9D%97%E6%97%B6%E6%8A%A5%E6%8A%A5%E6%A8%A1%E5%9D%97%E7%BC%BA%E5%A4%B1%E7%9A%84%E8%AD%A6%E5%91%8A/" title="解决Arch Linux构建内核模块时报报模块缺失的警告"><img src="https://img.xjh.me/random_img.php?type=bg&amp;ctype=nature&amp;return=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="解决Arch Linux构建内核模块时报报模块缺失的警告"/></a><div class="content"><a class="title" href="/2021/08/22/%E8%A7%A3%E5%86%B3Arch-Linux%E6%9E%84%E5%BB%BA%E5%86%85%E6%A0%B8%E6%A8%A1%E5%9D%97%E6%97%B6%E6%8A%A5%E6%8A%A5%E6%A8%A1%E5%9D%97%E7%BC%BA%E5%A4%B1%E7%9A%84%E8%AD%A6%E5%91%8A/" title="解决Arch Linux构建内核模块时报报模块缺失的警告">解决Arch Linux构建内核模块时报报模块缺失的警告</a><time datetime="2021-08-22T03:06:39.000Z" title="发表于 2021-08-22 11:06:39">2021-08-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/13/fcitx5%E5%BC%BA%E5%8A%BF%E6%9D%A5%E8%A2%AD%EF%BC%8C%E5%BF%AB%E6%9D%A5%E7%9C%8B%E7%9C%8B%E6%96%B0%E4%B8%80%E4%BB%A3Linux%E8%BE%93%E5%85%A5%E6%B3%95%E6%A1%86%E6%9E%B6/" title="fcitx5强势来袭，快来看看新一代Linux输入法框架"><img src="https://img.xjh.me/random_img.php?type=bg&amp;ctype=nature&amp;return=302" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="fcitx5强势来袭，快来看看新一代Linux输入法框架"/></a><div class="content"><a class="title" href="/2021/08/13/fcitx5%E5%BC%BA%E5%8A%BF%E6%9D%A5%E8%A2%AD%EF%BC%8C%E5%BF%AB%E6%9D%A5%E7%9C%8B%E7%9C%8B%E6%96%B0%E4%B8%80%E4%BB%A3Linux%E8%BE%93%E5%85%A5%E6%B3%95%E6%A1%86%E6%9E%B6/" title="fcitx5强势来袭，快来看看新一代Linux输入法框架">fcitx5强势来袭，快来看看新一代Linux输入法框架</a><time datetime="2021-08-13T13:02:38.000Z" title="发表于 2021-08-13 21:02:38">2021-08-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By 依墟</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk(Object.assign({
+      clientID: '67cd07a52f5651392ad6',
+      clientSecret: '8bf338af5c65b4c25de1f92061f98bb1d9641e4b',
+      repo: 'cwyawsl.github.io',
+      owner: 'cwyawsl',
+      admin: ['cwyawsl'],
+      id: 'bc7e612dcfaf41df573596a007a9d03b',
+      language: 'zh-CN',
+      perPage: 10,
+      distractionFreeMode: false,
+      pagerDirection: 'last',
+      createIssueManually: false,
+      updateCountCallback: commentCount
+    },null))
+
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js').then(initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
